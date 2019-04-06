@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "ZJExcelView.h"
 
 #define kScreenSize [UIScreen mainScreen].bounds.size
 #define kBarSpace 50
@@ -38,7 +39,7 @@
     [self.view addSubview:_scrollView];
     
     // 右下角
-    _contentView = [[UIView alloc] initWithFrame:CGRectMake(kBarSpace, kBarSpace, kContentW, kContentH)];
+    _contentView = [[ZJExcelView alloc] initWithFrame:CGRectMake(kBarSpace, kBarSpace, kContentW, kContentH)];
     _contentView.backgroundColor = [UIColor whiteColor];
     [_scrollView addSubview:_contentView];
     

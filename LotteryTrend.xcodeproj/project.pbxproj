@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD74E4C422589D04000C0E29 /* ZJExcelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD74E4C322589D04000C0E29 /* ZJExcelView.m */; };
 		AD820E6222534DCA006F5A32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD820E6122534DCA006F5A32 /* AppDelegate.m */; };
 		AD820E6522534DCA006F5A32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD820E6422534DCA006F5A32 /* ViewController.m */; };
 		AD820E6822534DCA006F5A32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD820E6622534DCA006F5A32 /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD74E4C222589D04000C0E29 /* ZJExcelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJExcelView.h; sourceTree = "<group>"; };
+		AD74E4C322589D04000C0E29 /* ZJExcelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJExcelView.m; sourceTree = "<group>"; };
 		AD820E5D22534DCA006F5A32 /* LotteryTrend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LotteryTrend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD820E6022534DCA006F5A32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD820E6122534DCA006F5A32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				AD820E6122534DCA006F5A32 /* AppDelegate.m */,
 				AD820E6322534DCA006F5A32 /* ViewController.h */,
 				AD820E6422534DCA006F5A32 /* ViewController.m */,
+				AD74E4C222589D04000C0E29 /* ZJExcelView.h */,
+				AD74E4C322589D04000C0E29 /* ZJExcelView.m */,
 				AD820E6622534DCA006F5A32 /* Main.storyboard */,
 				AD820E6922534DCC006F5A32 /* Assets.xcassets */,
 				AD820E6B22534DCC006F5A32 /* LaunchScreen.storyboard */,
@@ -261,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD74E4C422589D04000C0E29 /* ZJExcelView.m in Sources */,
 				AD820E6522534DCA006F5A32 /* ViewController.m in Sources */,
 				AD820E7022534DCC006F5A32 /* main.m in Sources */,
 				AD820E6222534DCA006F5A32 /* AppDelegate.m in Sources */,
