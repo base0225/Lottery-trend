@@ -61,6 +61,24 @@
         CGContextDrawPath(context, kCGPathStroke);
     }
     
+    /***这边就是为了解决圆在上，线在下的问题****/
+    //先获取到位置画线的位置
+    for (int i = 0; i<_fillDatas.count; i++) {
+        NSString *number = _fillDatas[i];
+        for (int x = 0; x < _xDatas.count; x++) {
+            if ([number intValue] ==x) {
+                //画圆圈
+                CGContextAddArc(context, FormWidth*x+FormWidth/2+FormWidth, FormHeight*i+FormHeight/2+7, FormHeight/2, 0, M_PI*2, 1);
+                CGPoint point = CGPointMake(FormWidth*x+FormWidth/2+FormWidth, FormHeight*i+FormHeight/2+7);
+                NSString *str = NSStringFromCGPoint(point);
+                //保存圆中心的位置 给下面的连线
+                [_frameArr addObject:str];
+            }
+        }
+    }
+    //先画线 ，再画圆
+    [self drawNumCircleAtContext:context showLine:YES];
+    /**********/
     for (int j=0; j <= _yDatas.count+2; j++) {
         if (j<maxNum) {
             for (int i=0; i<maxNum; i++) {
@@ -74,6 +92,31 @@
         CGContextMoveToPoint(context, j*FormWidth, 7);
         CGContextAddLineToPoint(context, j*FormWidth, maxNum*FormHeight+7);
         CGContextDrawPath(context, kCGPathStroke);
+    }
+    
+}
+
+- (void)drawNumCircleAtContext:(CGContextRef)context showLine:(BOOL)showLine
+{
+    // 画连接线
+    if (showLine) {
+        CGPoint lastPoint = CGPointZero;
+        for (NSArray *item in self.frameArr) {
+            if (![item isKindOfClass:[NSArray class]]
+                || item.count < 2) {
+                continue;
+            }
+            
+            CGPoint current = CGPointFromString(item.firstObject);
+            if (!CGPointEqualToPoint(lastPoint, CGPointZero)) {
+                CGContextMoveToPoint(context, lastPoint.x, lastPoint.y);
+                CGContextAddLineToPoint(context, current.x, current.y);
+            }
+            lastPoint = current;
+        }
+        CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor);
+        CGContextSetLineWidth(context, 1.0f);
+        CGContextStrokePath(context);
     }
     
     // 画填充圆
@@ -102,24 +145,6 @@
                 [numberStr drawInRect:CGRectMake((FormWidth-size.width)/2.0+x*FormWidth+FormWidth,(FormHeight-size.height)/2.0+i*FormHeight+7, FormWidth, FormHeight) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor redColor]}];
             }
         }
-    }
-    
-    for (int i=0; i<_frameArr.count; i++) {
-        NSString *str = [_frameArr objectAtIndex:i];
-        CGPoint point = CGPointFromString(str);
-        // 设置画笔颜色
-        CGContextSetStrokeColorWithColor(context, [UIColor purpleColor].CGColor);
-        CGContextSetLineWidth(context, .4);
-        if (i==0) {
-            // 画笔的起始坐标
-            CGContextMoveToPoint(context, point.x, point.y);
-        }else{
-            NSString *str1 = [_frameArr objectAtIndex:i-1];
-            CGPoint point1 = CGPointFromString(str1);
-            CGContextMoveToPoint(context, point1.x, point1.y);
-            CGContextAddLineToPoint(context, point.x,  point.y);
-        }
-        CGContextDrawPath(context, kCGPathStroke);
     }
 }
 
